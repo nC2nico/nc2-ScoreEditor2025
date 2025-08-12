@@ -1,0 +1,30 @@
+# Node.js
+node_modules/
+
+# Vite build
+client/dist/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+
+# Env
+.env
+
+# Server build
+server/dist/
+
+# Others
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: coverage, test output
+coverage/
+__pycache__/

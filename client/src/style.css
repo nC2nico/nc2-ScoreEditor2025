@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 元のstyle.cssから持ってきたカスタムスタイル */
+body {
+    background-color: #1a1a2e; /* より深い紫 */
+}
+
+/* スクロールバー */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #16213e; }
+::-webkit-scrollbar-thumb { background-color: #4a5568; border-radius: 5px; }
+
+/* 左ツールバーボタン */
+.tool-button {
+    @apply w-full bg-gray-800 border border-gray-600 text-gray-200 p-2 rounded-md text-left font-bold transition-all duration-200;
+}
+.tool-button:hover {
+    @apply bg-gray-700 border-purple-400;
+}
+.tool-active {
+    @apply bg-purple-500 text-white border-purple-500;
+}
+.side-button {
+    @apply bg-gray-800 border border-gray-600 text-gray-200 p-2 rounded-md font-bold transition-all duration-200;
+}
+.side-active {
+    @apply bg-indigo-500 text-white border-indigo-500;
+}
+
+/* 右情報パネル */
+.info-panel {
+    @apply bg-gray-800 rounded-lg p-3;
+}
+.info-panel-title {
+    @apply font-bold text-purple-400 mb-2;
+}
+.info-input {
+    @apply w-full bg-gray-700 border border-gray-600 rounded-md p-2 text-sm mt-1;
+}
+.button-primary {
+    @apply bg-purple-500 text-white border-none rounded-md py-2 px-3 font-bold cursor-pointer transition-colors duration-200;
+}
+.button-primary:hover {
+    @apply bg-purple-600;
+}
+.button-primary-hollow {
+    @apply bg-transparent text-purple-400 border border-purple-400 rounded-md py-2 px-3 font-bold cursor-pointer transition-all duration-200;
+}
+.button-primary-hollow:hover {
+    @apply bg-purple-500 bg-opacity-10;
+}
+
+/* ノーツのスタイル */
+.note {
+    @apply absolute rounded border border-white box-border cursor-pointer transition-transform duration-100 ease-in-out;
+    background: linear-gradient(135deg, #00ffff, #7a7afc);
+    box-shadow: 0 0 8px #00ffff, 0 0 12px #00ffff, inset 0 0 4px white;
+}
+.note:hover {
+    transform: scale(1.05);
+}
+.note-selected {
+    box-shadow: 0 0 12px #fafa6e, 0 0 18px #fafa6e, inset 0 0 6px white;
+    border: 2px solid #fafa6e;
+}
