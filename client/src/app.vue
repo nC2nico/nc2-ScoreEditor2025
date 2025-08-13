@@ -121,12 +121,34 @@
               <template v-for="(segment, index) in moduleSegments" :key="'segment-' + index">
                 <div class="absolute w-full flex" :style="{ top: timeToY(segment.startTime) + 'px', height: timeToY(segment.endTime) - timeToY(segment.startTime) + 'px' }">
                   <div class="w-1/2 h-full relative flex" :class="getModuleInfo(segment.leftModule).color">
-                    <template v-for="i in getLaneCount(segment.leftModule)" :key="'left-lane-' + i">
+                    <template v-if="segment.leftModule === 3" v-for="i in 5" :key="'left-lane-c-' + i">
+                      <div
+                        :style="{
+                          width: [24, 14, 24, 14, 24][i-1] + '%',
+                          left: [0, 24, 38, 62, 76][i-1] + '%',
+                          position: 'absolute',
+                          background: i % 2 === 0 ? 'rgba(40,0,60,0.7)' : 'rgba(80,0,120,0.3)'
+                        }"
+                        class="h-full border-r border-gray-700/50"
+                      ></div>
+                    </template>
+                    <template v-else v-for="i in getLaneCount(segment.leftModule)" :key="'left-lane-other-' + i">
                       <div class="flex-1 h-full border-r border-gray-700/50"></div>
                     </template>
                   </div>
                   <div class="w-1/2 h-full relative flex" :class="getModuleInfo(segment.rightModule).color">
-                    <template v-for="i in getLaneCount(segment.rightModule)" :key="'right-lane-' + i">
+                    <template v-if="segment.rightModule === 3" v-for="i in 5" :key="'right-lane-c-' + i">
+                      <div
+                        :style="{
+                          width: [16, 12, 16, 12, 16][i-1] + '%',
+                          background: i % 2 === 0 ? 'rgba(40,0,60,0.7)' : 'rgba(80,0,120,0.3)',
+                          marginLeft: i === 1 ? '0%' : '0%',
+                          marginRight: '0%'
+                        }"
+                        class="h-full border-r border-gray-700/50"
+                      ></div>
+                    </template>
+                    <template v-else v-for="i in getLaneCount(segment.rightModule)" :key="'right-lane-other-' + i">
                       <div class="flex-1 h-full border-r border-gray-700/50"></div>
                     </template>
                   </div>

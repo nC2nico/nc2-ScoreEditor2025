@@ -38,8 +38,8 @@ export function useChartIO() {
     // Remove the temporary 'id' field used for Vue's reactivity
     const exportableNotes = flattenedNotes.map(n => {
       const { id, ...rest } = n;
-      // As per spec, lane is not needed for Type:D
-      if (rest.moduleType === 1) delete rest.lane;
+  // As per spec, lane is not needed for Type:R
+  if (rest.moduleType === 1) delete rest.lane;
       return rest;
     });
 

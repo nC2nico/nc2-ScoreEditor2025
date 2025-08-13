@@ -25,8 +25,9 @@ export function useNoteEditor(editorContainer, getBpmAt, getModuleAt, snapTimeTo
     const totalLanes = getLaneCount(note.moduleType);
     if (totalLanes === 0) return {};
 
-    const laneWidth = 50 / totalLanes;
+    const laneWidth = note.moduleType === 3 ? [12, 7, 12, 7, 12][note.lane] : 50 / totalLanes;
     const leftOffset = note.side === 'Left' ? 0 : 50;
+    const notesLaneOffset = note.moduleType === 3 ? [0, 12, 19, 31, 38][note.lane] : note.lane * laneWidth;
     
     const startY = timeToY(note.timing);
     
@@ -36,10 +37,9 @@ export function useNoteEditor(editorContainer, getBpmAt, getModuleAt, snapTimeTo
     } else {
       height = 16; // Fixed height for tap notes
     }
-    
     return {
       top: `${startY}px`,
-      left: `${leftOffset + note.lane * laneWidth}%`,
+      left: `${leftOffset + notesLaneOffset}%`,
       width: `${laneWidth}%`,
       height: `${Math.max(2, height)}px`,
       minHeight: '2px'
@@ -77,8 +77,8 @@ const addNote = (noteData) => {
             newNote.lane = noteData.lane;
             if (newNote.notesType === 'Long') newNote.longDuration = noteData.longDuration || getSnapDuration();
             break;
-        case 1: // Type:D
-            newNote.notesType = 'Tap'; // Explicitly set for Type:D
+        case 1: // Type:R
+            newNote.notesType = 'Tap'; // Explicitly set for Type:R
             newNote.lane = 0;
             break;
         case 3: // Type:C
@@ -98,7 +98,7 @@ const addNote = (noteData) => {
     }
     
     if ( (noteData.moduleType === 3 && noteData.side === 'Right') || (noteData.moduleType === 4 && noteData.side === 'Left')) {
-        alert("このモジュールは指定されたサイドに配置できません。"); return;
+        //alert("このモジュールは指定されたサイドに配置できません。"); return;
     }
     if (chart.notes[noteData.moduleType]) {
       chart.notes[noteData.moduleType].push(newNote);
