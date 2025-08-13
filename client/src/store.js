@@ -1,40 +1,40 @@
-import { reactive, ref } from 'vue';
+/**
+ * 統合ストア - 後方互換性のため
+ * 新しいコードでは個別のストアファイルを直接インポートすることを推奨
+ */
 
-// --- Global State ---
+// 分割されたストアから状態をre-export
+export { 
+  chart, 
+  resetChart, 
+  setChart 
+} from './stores/chart.js';
 
-// The core chart data object
-export const chart = reactive({
-  meta: {
-    title: "新しい曲",
-    artist: "アーティスト",
-    charter: "譜面制作者",
-    audioFileName: "",
-    initialDifficulty: 1,
-  },
-  timing: {
-    initialBpm: 120.0,
-    initialBeatRate: 4.0,
-    initialOffsetMs: 0.0,
-    changes: [],
-  },
-  notes: {
-    0: [], 1: [], 2: [], 3: [], 4: []
-  },
-});
+export { 
+  audioContext, 
+  audioBuffer, 
+  isPlaying, 
+  currentTime, 
+  audioDuration,
+  resetAudioState,
+  setCurrentTime,
+  togglePlayback,
+  stopPlayback
+} from './stores/player.js';
 
-// Audio and playback state
-export const audioContext = ref(null);
-export const audioBuffer = ref(null);
-export const isPlaying = ref(false);
-export const currentTime = ref(0);
-export const audioDuration = ref(0);
-
-// Editor state
-export const pixelsPerSecond = ref(100); // Zoom level
-export const gridSnap = ref(16);
-export const currentTool = ref('tap');
-export const selectedNote = ref(null);
-export const scrollTop = ref(0);
-
-// UI state
-export const showTimingEditor = ref(false);
+export { 
+  pixelsPerSecond, 
+  gridSnap, 
+  currentTool, 
+  selectedNote, 
+  scrollTop,
+  showTimingEditor,
+  AVAILABLE_TOOLS,
+  AVAILABLE_SNAP_VALUES,
+  setCurrentTool,
+  setGridSnap,
+  clearSelection,
+  selectNote,
+  setZoom,
+  resetEditorState
+} from './stores/editor.js';

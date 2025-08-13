@@ -1,5 +1,7 @@
 import { computed } from 'vue';
-import { chart, currentTime, audioDuration, scrollTop, gridSnap, pixelsPerSecond } from '../store.js';
+import { chart } from '../stores/chart.js';
+import { currentTime, audioDuration } from '../stores/player.js';
+import { scrollTop, gridSnap, pixelsPerSecond } from '../stores/editor.js';
 import { timeToY, yToTime } from '../utils/timelineConverter.js';
 
 export function useTiming() {

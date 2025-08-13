@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue';
-import { chart, pixelsPerSecond, gridSnap } from '../store.js';
+import { chart } from '../stores/chart.js';
+import { pixelsPerSecond, gridSnap } from '../stores/editor.js';
 import { timeToY } from '../utils/timelineConverter.js';
 import { useTiming } from './useTiming.js';
 

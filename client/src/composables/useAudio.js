@@ -1,5 +1,12 @@
 import { ref } from 'vue';
-import { audioContext, audioBuffer, audioDuration, isPlaying, currentTime, chart } from '../store.js';
+import { 
+  audioContext, 
+  audioBuffer, 
+  audioDuration, 
+  isPlaying, 
+  currentTime 
+} from '../stores/player.js';
+import { chart } from '../stores/chart.js';
 
 export function useAudio() {
   const audioSource = ref(null);

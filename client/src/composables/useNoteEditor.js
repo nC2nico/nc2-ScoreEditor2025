@@ -1,5 +1,6 @@
 import { ref } from 'vue';
-import { chart, currentTool, gridSnap, selectedNote } from '../store.js';
+import { chart } from '../stores/chart.js';
+import { currentTool, gridSnap, selectedNote } from '../stores/editor.js';
 import { yToTime, timeToY } from '../utils/timelineConverter.js';
 import { MODULE_LANE_COUNT } from '../constants.js';
 

@@ -1,4 +1,4 @@
-import { chart } from '../store.js';
+import { chart } from '../stores/chart.js';
 
 export function useChartIO() {
 
